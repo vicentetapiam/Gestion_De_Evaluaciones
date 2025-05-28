@@ -44,6 +44,22 @@ public class CalificacionController {
         return new ResponseEntity<>(calificaciones,HttpStatus.OK);
     }
 
+//COMENTAR SI NO FUNCIONA
+/* 
+    @GetMapping("/{id}")
+    public ResponseEntity<List<Calificacion>> getPorId(@PathVariable int id, @RequestBody Calificacion calificacion){
+        Calificacion c = calificacionService.findById(calificacion.getId());
+
+        if (c == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }else{
+                return new ResponseEntity<>(c, HttpStatus.OK);
+            }
+        
+    }
+    
+*/
+
 
     @PostMapping
     public ResponseEntity<Calificacion> postCalificacion(@RequestBody Calificacion calificacion)
@@ -62,6 +78,7 @@ public class CalificacionController {
         }
         return new ResponseEntity<>(nuevo,HttpStatus.CREATED);
     }
+
 
 
 //REMPLEAZAR DATOS
