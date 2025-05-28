@@ -38,7 +38,8 @@ public class EvaluacionController {
 //CREAR/ACTUALIZAR
     @PostMapping
     public ResponseEntity<Evaluacion> postEvaluacion(@RequestBody Evaluacion evaluacion){
-        Evaluacion nuevo=evaluacionService.guardar(evaluacion);
+
+        Evaluacion nuevo=evaluacionService.findById(evaluacion.getEvaluacionid());
         if (nuevo==null)
         {
             return new ResponseEntity<>(evaluacionService.guardar(evaluacion), HttpStatus.CREATED);
@@ -50,7 +51,7 @@ public class EvaluacionController {
     }
 
 //ELIMAR DATOS
-@DeleteMapping("/{evaluacionId}")
+@DeleteMapping("/{evaluacionid}")
 public ResponseEntity<Void> deleteEvaluacion(@PathVariable int evaluacionId) {
     Evaluacion buscado = evaluacionService.findById(evaluacionId);
     if (buscado == null) {

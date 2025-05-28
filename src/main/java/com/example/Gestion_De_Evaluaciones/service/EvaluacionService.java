@@ -23,14 +23,14 @@ public class EvaluacionService {
         return evaluacionRepository.save(evaluacion);
     }
 
-    public Evaluacion evaliacionxid(int id)
+    public Evaluacion evaluacionxid(int id)
     {
         return evaluacionRepository.getReferenceById(id);
     }
 
     public Evaluacion findById(int id)
     {
-        return evaluacionRepository.getReferenceById(id);
+        return evaluacionRepository.findById(id);
     }
 
     public void delete(Evaluacion evaluacion)

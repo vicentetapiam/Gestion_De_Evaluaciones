@@ -44,13 +44,13 @@ public class CalificacionController {
         return new ResponseEntity<>(calificaciones,HttpStatus.OK);
     }
 
-//CREAR/ACTUALIZAR
+
     @PostMapping
     public ResponseEntity<Calificacion> postCalificacion(@RequestBody Calificacion calificacion)
     {
         int id_link=calificacion.getEvaluacion().getEvaluacionid();
-
-        Evaluacion evaluacion=evaluacionService.evaliacionxid(id_link);
+        
+        Evaluacion evaluacion=evaluacionService.evaluacionxid(id_link);
         if (evaluacion!=null)
         {
             calificacion.setEvaluacion(evaluacion);
