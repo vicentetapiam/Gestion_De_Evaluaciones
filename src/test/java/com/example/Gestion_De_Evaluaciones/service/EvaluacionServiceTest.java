@@ -1,5 +1,8 @@
 package com.example.Gestion_De_Evaluaciones.service;
 
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,8 +32,12 @@ public class EvaluacionServiceTest {
 
     @Test
     void testGuardar() {
-        //List<Calificacion> lista = new ArrayList<>();
-        Evaluacion evaluacion = new Evaluacion(1, 22/06/2025, "Matematicas", null)
+        Evaluacion evaluacion = new Evaluacion(0, "25/06/2025", "Matematica");
+        Evaluacion evaluacionGuardada = new Evaluacion(1, "25/06/2025", "Matematica");
+        when(evaluacionRepository.save(evaluacion)).thenReturn(evaluacionGuardada);
+        
+        Evaluacion resultado = evaluacionService.guardar(evaluacion);
+        assertThat(resultado.getEvaluacionid()).isEqualTo(1);
+        verify(evaluacionRepository).save(evaluacion);
     }
 }
- 

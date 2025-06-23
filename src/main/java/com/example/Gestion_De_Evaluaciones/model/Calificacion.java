@@ -31,7 +31,6 @@ public class Calificacion {
 
     @ManyToOne
     @JoinColumn(name= "evaluacionid" )
-    //@JoinColumn(referencedColumnName= "evaluacionid" )
     @JsonBackReference
     private Evaluacion evaluacion;
 }

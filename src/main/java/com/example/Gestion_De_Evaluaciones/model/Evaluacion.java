@@ -31,14 +31,15 @@ public class Evaluacion {
     private int evaluacionid;
 
     @Column(length = 10, nullable = false)
-    private Date fecha;
+    private String fecha;
 
     @Column(length = 50, nullable = false)
     private String ramo;
-
+/* 
     @OneToMany(mappedBy = "evaluacion", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Calificacion> notas;
+    */
 
 
 
