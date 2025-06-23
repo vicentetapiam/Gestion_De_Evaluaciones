@@ -13,7 +13,7 @@ public class CalificacionService {
     @Autowired
     private CalificacionRepository calificacionRepository;
 
-    public List<Calificacion> calificaciones()
+    public List<Calificacion> listarCalificaciones()
     {
         return calificacionRepository.findAll();
     }

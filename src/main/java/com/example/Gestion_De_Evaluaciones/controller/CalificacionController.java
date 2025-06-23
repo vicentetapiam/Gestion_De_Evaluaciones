@@ -35,7 +35,7 @@ public class CalificacionController {
     @GetMapping
     public ResponseEntity<List<Calificacion>> getCalificaciones()
     {
-        List<Calificacion> calificaciones = calificacionService.calificaciones();
+        List<Calificacion> calificaciones = calificacionService.listarCalificaciones();
         if(calificaciones.isEmpty())
         {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

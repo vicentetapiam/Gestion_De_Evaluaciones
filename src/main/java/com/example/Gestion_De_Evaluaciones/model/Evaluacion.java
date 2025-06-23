@@ -38,7 +38,6 @@ public class Evaluacion {
 
     @OneToMany(mappedBy = "evaluacion", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-
     private List<Calificacion> notas;
 
 

@@ -30,7 +30,8 @@ public class Calificacion {
     private float nota;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName= "evaluacionid" )
+    @JoinColumn(name= "evaluacionid" )
+    //@JoinColumn(referencedColumnName= "evaluacionid" )
     @JsonBackReference
     private Evaluacion evaluacion;
 }
