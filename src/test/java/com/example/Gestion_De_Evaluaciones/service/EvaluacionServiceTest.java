@@ -42,12 +42,12 @@ public class EvaluacionServiceTest {
 
     @Test
     void testListarTodo(){
-        Evaluacion ev1 = new Evaluacion(1, "23/06/2025", "Ciencias");
-        Evaluacion ev2 = new Evaluacion(2, "25/10/2025", "Matematica");
-        when(evaluacionRepository.findAll()).thenReturn(Arrays.asList(ev1, ev2));
+        Evaluacion e1 = new Evaluacion(1, "23/06/2025", "Ciencias");
+        Evaluacion e2 = new Evaluacion(2, "25/10/2025", "Matematica");
+        when(evaluacionRepository.findAll()).thenReturn(Arrays.asList(e1, e2));
 
         List<Evaluacion> resultado = evaluacionService.listarTodos();
-        assertThat(resultado).hasSize(2).contains(ev1, ev2);
+        assertThat(resultado).hasSize(2).contains(e1, e2);
         verify(evaluacionRepository).findAll();
     }
 
