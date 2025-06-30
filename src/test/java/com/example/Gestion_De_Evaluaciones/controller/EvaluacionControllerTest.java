@@ -1,20 +1,20 @@
 package com.example.Gestion_De_Evaluaciones.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import static org.mockito.ArgumentMatchers.any;
+import org.mockito.Mockito;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-
-import org.mockito.Mockito;
+import static org.mockito.Mockito.when;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -49,7 +49,7 @@ public class EvaluacionControllerTest {
     }
 */
     @Test
-    public void getEvaluacionesTest() throws Exception {
+    void getEvaluacionesTest() throws Exception {
         Evaluacion e1 = new Evaluacion(1, "22/06/2025", "Matematica");
         Evaluacion e2 = new Evaluacion(2, "23/06/2025", "Lenguaje");    
         Mockito.when(evaluacionService.listarTodos()).thenReturn(List.of(e1, e2));
@@ -60,6 +60,14 @@ public class EvaluacionControllerTest {
                 .andExpect(jsonPath("$[1].ramo").value("Lenguaje"));
     }
 
+
+    @Test 
+    void getEvaluacionSinContenidoTest() throws Exception {
+        when(evaluacionService.listarTodos()).thenReturn(Collections.emptyList());
+
+        mockMvc.perform(get("/api/evaluacion"))
+                .andExpect(status().isNoContent());
+    }
 
     @Test
     void postEvaluacionTest() throws Exception {
@@ -72,7 +80,7 @@ public class EvaluacionControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(e1)))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.evaluacionid").value(3))
+                .andExpect(jsonPath("$.id").value(3))
                 .andExpect(jsonPath("$.fecha").value("30/06/2025"))
                 .andExpect(jsonPath("$.ramo").value("Historia"));
     }

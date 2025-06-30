@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
@@ -77,7 +79,9 @@ public class CalificacionServiceTest {
         Evaluacion e1 = new Evaluacion(1, "29/06/2025", "Ciencias");
         Calificacion c = new Calificacion(5, 39, e1);
 
-        calificacionService.delete(c);
-        verify(calificacionRepository).delete(c);
+        calificacionService.deleteById(5);
+        verify(calificacionRepository).deleteById(5);
     }
+
+
 }

@@ -19,5 +19,5 @@ public interface CalificacionRepository extends JpaRepository<Calificacion, Inte
 
     Calificacion getReferenceById(Integer id);
 
-    void delete(Calificacion calificacion);
+    void deleteById(Calificacion calificacion);
 }

@@ -50,18 +50,7 @@ public class EvaluacionController {
         }
     }
 
-/*/ELIMAR DATOS
-@DeleteMapping("/{evaluacionid}")
-public ResponseEntity<Void> deleteEvaluacion(@PathVariable int evaluacionId) {
-    Evaluacion buscado = evaluacionService.findById(evaluacionId);
-    if (buscado == null) {
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    } else {
-        evaluacionService.delete(buscado);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-}
-*/
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Evaluacion> deleteEvaluacion(@PathVariable int id, Evaluacion evaluacion){
 

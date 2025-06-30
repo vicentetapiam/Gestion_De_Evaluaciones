@@ -28,8 +28,10 @@ public class CalificacionService {
         return calificacionRepository.getReferenceById(id);
     }
 
-    public void delete(Calificacion calificacion)
+    public void deleteById(int id)
     {
-        calificacionRepository.delete(calificacion);
+        calificacionRepository.deleteById(id);
     }
+
+
 }

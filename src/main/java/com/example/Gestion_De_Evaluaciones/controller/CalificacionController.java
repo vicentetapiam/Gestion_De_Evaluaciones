@@ -44,23 +44,6 @@ public class CalificacionController {
         return new ResponseEntity<>(calificaciones,HttpStatus.OK);
     }
 
-//COMENTAR SI NO FUNCIONA
-/* 
-    @GetMapping("/{id}")
-    public ResponseEntity<List<Calificacion>> getPorId(@PathVariable int id, @RequestBody Calificacion calificacion){
-        Calificacion c = calificacionService.findById(calificacion.getId());
-
-        if (c == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }else{
-                return new ResponseEntity<>(c, HttpStatus.OK);
-            }
-        
-    }
-    
-*/
-
-
     @PostMapping
     public ResponseEntity<Calificacion> postCalificacion(@RequestBody Calificacion calificacion)
     {
@@ -80,6 +63,14 @@ public class CalificacionController {
     }
 
 
+/* 
+    @PostMapping("/calificaciones")
+    public ResponseEntity<Calificacion> crearCalificacion(@RequestBody Calificacion calificacion) {
+        Calificacion saved = calificacionService.guardar(calificacion);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+}
+*/
+
 
 //REMPLEAZAR DATOS
     @PutMapping("/{id}")
@@ -96,20 +87,14 @@ public class CalificacionController {
             return new ResponseEntity<>(calificacionService.guardar(calificacionMod),HttpStatus.OK);
         }
     } 
-/* 
-        @DeleteMapping("/{id}")
-    public ResponseEntity<Calificacion>deleteSistema(@PathVariable int id, Calificacion calificacion){
-        Calificacion buscado = calificacionService.findById(calificacion.getId());
-        if(buscado == null)
-        {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        else
-        {
-            calificacionService.delete(buscado);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Calificacion> deleteCalificacion(@PathVariable int id, Calificacion calificacion){
+
+        calificacionService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
-*/
+
     
 }
