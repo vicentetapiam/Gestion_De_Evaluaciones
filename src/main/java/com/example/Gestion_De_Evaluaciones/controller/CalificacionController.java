@@ -64,7 +64,7 @@ public class CalificacionController {
     @PostMapping
     public ResponseEntity<Calificacion> postCalificacion(@RequestBody Calificacion calificacion)
     {
-        int id_link=calificacion.getEvaluacion().getEvaluacionid();
+        int id_link=calificacion.getEvaluacion().getId();
         
         Evaluacion evaluacion=evaluacionService.evaluacionxid(id_link);
         if (evaluacion!=null)
@@ -96,7 +96,7 @@ public class CalificacionController {
             return new ResponseEntity<>(calificacionService.guardar(calificacionMod),HttpStatus.OK);
         }
     } 
-
+/* 
         @DeleteMapping("/{id}")
     public ResponseEntity<Calificacion>deleteSistema(@PathVariable int id, Calificacion calificacion){
         Calificacion buscado = calificacionService.findById(calificacion.getId());
@@ -110,6 +110,6 @@ public class CalificacionController {
             return new ResponseEntity<>(HttpStatus.OK);
         }
     }
-
+*/
     
 }

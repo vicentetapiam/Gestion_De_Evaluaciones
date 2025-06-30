@@ -19,6 +19,6 @@ public interface EvaluacionRepository extends JpaRepository<Evaluacion, Integer>
 
     Evaluacion getReferenceById(Integer id);
 
-    void delete(Evaluacion evaluacion);
+    void deleteById(Evaluacion evaluacion);
 
 }

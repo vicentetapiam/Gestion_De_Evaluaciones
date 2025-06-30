@@ -4,12 +4,18 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -65,26 +71,22 @@ public class EvaluacionControllerTest {
         mockMvc.perform(post("/api/evaluacion")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(e1)))
-                //.andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.evaluacionid").value(3))
                 .andExpect(jsonPath("$.fecha").value("30/06/2025"))
                 .andExpect(jsonPath("$.ramo").value("Historia"));
     }
 
 
-    @Test
-    void deleteEvaluacionTest() throws Exception {
-        int evaluacionId = 1;
-        Evaluacion evaluacion = new Evaluacion(evaluacionId, "25/06/2025", "Ciencias");
 
-        Mockito.when(evaluacionService.findById(evaluacionId)).thenReturn(evaluacion);
-        Mockito.doNothing().when(evaluacionService).delete(evaluacion);
+    @Test 
+    public void deleteEvaluacionTest() throws Exception{
+        int id = 1;
+        doNothing().when(evaluacionService).deleteById(id);
 
-        mockMvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders
-                .delete("/api/evaluacion/{evaluacionid}", evaluacionId));
-                //.andExpect(status().isOk());
+        mockMvc.perform(delete("/api/evaluacion/1"))
+            .andExpect(status().isOk());
+
+        verify(evaluacionService, times(1)).deleteById(id);
     }
-
-
-
 }

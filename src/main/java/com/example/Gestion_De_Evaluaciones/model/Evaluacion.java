@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 public class Evaluacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int  evaluacionid;
+    private int id;
 
     @Column(length = 10, nullable = false)
     private String fecha;

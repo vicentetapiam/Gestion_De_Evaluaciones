@@ -33,8 +33,8 @@ public class EvaluacionService {
         return evaluacionRepository.findById(id);
     }
 
-    public void delete(Evaluacion evaluacion)
+    public void deleteById(int id)
     {
-        evaluacionRepository.delete(evaluacion);
+        evaluacionRepository.deleteById(id);
     }
 }

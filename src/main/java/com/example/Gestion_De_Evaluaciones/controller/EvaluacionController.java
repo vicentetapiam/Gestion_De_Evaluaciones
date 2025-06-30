@@ -39,7 +39,7 @@ public class EvaluacionController {
     @PostMapping
     public ResponseEntity<Evaluacion> postEvaluacion(@RequestBody Evaluacion evaluacion){
 
-        Evaluacion nuevo=evaluacionService.findById(evaluacion.getEvaluacionid());
+        Evaluacion nuevo=evaluacionService.findById(evaluacion.getId());
         if (nuevo==null)
         {
             return new ResponseEntity<>(evaluacionService.guardar(evaluacion), HttpStatus.CREATED);
@@ -50,7 +50,7 @@ public class EvaluacionController {
         }
     }
 
-//ELIMAR DATOS
+/*/ELIMAR DATOS
 @DeleteMapping("/{evaluacionid}")
 public ResponseEntity<Void> deleteEvaluacion(@PathVariable int evaluacionId) {
     Evaluacion buscado = evaluacionService.findById(evaluacionId);
@@ -61,4 +61,12 @@ public ResponseEntity<Void> deleteEvaluacion(@PathVariable int evaluacionId) {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
+*/
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Evaluacion> deleteEvaluacion(@PathVariable int id, Evaluacion evaluacion){
+
+        evaluacionService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
