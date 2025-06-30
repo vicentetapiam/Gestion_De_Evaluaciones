@@ -69,5 +69,6 @@ public class EvaluacionServiceTest {
         evaluacionService.delete(evaluacion);
         verify(evaluacionRepository).delete(evaluacion);
     }
+
 }
 

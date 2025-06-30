@@ -35,7 +35,7 @@ public class EvaluacionController {
         return new ResponseEntity<>(evaluaciones, HttpStatus.OK);
     }
 
-//CREAR/ACTUALIZAR
+//CREAR
     @PostMapping
     public ResponseEntity<Evaluacion> postEvaluacion(@RequestBody Evaluacion evaluacion){
 
